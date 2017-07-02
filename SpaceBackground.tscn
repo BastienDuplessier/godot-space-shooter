@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://SpaceBackground.gd" type="Script" id=1]
+[ext_resource path="res://background.jpg" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "scroll"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("background:rect/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1024 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("background:rect/size")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 1536 ), Vector2( 256, 1536 ) ]
+}
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+script/script = ExtResource( 1 )
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="background" type="TextureFrame" parent="SpaceLayer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = -876.238
+margin/right = 256.0
+margin/bottom = 659.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceLayer"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/scroll = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "scroll"
+
+
