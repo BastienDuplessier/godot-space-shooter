@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://assets/images/spaceship.png" type="Texture" id=1]
+
+[node name="Player" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="spaceship" type="Sprite" parent="."]
+
+transform/pos = Vector2( 128, 450 )
+texture = ExtResource( 1 )
+
+
