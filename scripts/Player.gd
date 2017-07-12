@@ -9,6 +9,9 @@ const MAX_SPEED = 200
 const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
 
+var shootCount = 0
+var shoot = preload("res://Shoot.tscn")
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -33,4 +36,12 @@ func _fixed_process(delta):
 	move(direction * speed * delta)
 
 func _input(event):
-	print(event)
+	if Input.is_action_pressed("shoot"):
+		shoot_projectile()
+
+func shoot_projectile():
+	shootCount = shootCount + 1
+	var shootInstance = shoot.instance()
+	shootInstance.set_name("Shoot" + str(shootCount))
+	get_parent().add_child(shootInstance)
+	shootInstance.set_pos(self.get_pos())
