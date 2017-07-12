@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+custom_solver_bias = 0.0
+a = Vector2( 0, 0 )
+b = Vector2( 0, 10 )
+
+[node name="Borders" type="Node2D"]
+
+[node name="SideBorders" type="StaticBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1e-05, 0, 0, 60, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( 1e-05, 0, 0, 60, 256, 0 )
+shapes/1/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="LeftSide" type="CollisionShape2D" parent="SideBorders"]
+
+transform/scale = Vector2( 1e-05, 60 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RightSide" type="CollisionShape2D" parent="SideBorders"]
+
+transform/pos = Vector2( 256, 0 )
+transform/scale = Vector2( 1e-05, 60 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
+
+
