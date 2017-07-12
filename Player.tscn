@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/spaceship.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/spaceship-shoot.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.3049
+height = 11.6709
 
 [sub_resource type="Animation" id=1]
 
@@ -151,6 +157,9 @@ tracks/8/keys = {
 [node name="Player" type="KinematicBody2D"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 2.50551, 0, 0, 1.96881, 0.135273, 1.06855 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -163,11 +172,11 @@ texture = ExtResource( 2 )
 [node name="spaceship-shoot" type="Sprite" parent="."]
 
 visibility/visible = false
-visibility/opacity = 0.0
+visibility/opacity = 0.99232
 transform/pos = Vector2( 0, -38 )
 texture = ExtResource( 3 )
 hframes = 4
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -180,5 +189,13 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0.135273, 1.06855 )
+transform/scale = Vector2( 2.50551, 1.96881 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
 
 
