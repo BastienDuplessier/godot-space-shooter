@@ -40,6 +40,7 @@ func _input(event):
 		shoot_projectile()
 
 func shoot_projectile():
+	get_node("AnimationPlayer").play("Shoot")
 	shootCount = shootCount + 1
 	var shootInstance = shoot.instance()
 	shootInstance.set_name("Shoot" + str(shootCount))
