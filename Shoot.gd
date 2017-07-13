@@ -10,5 +10,5 @@ func _ready():
 	pass
 
 func _on_Shoot_body_enter( body ):
-	if body.get_name() == "BackField":
+	if body.get_name() == "Limits":
 		self.queue_free()

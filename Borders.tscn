@@ -39,12 +39,15 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 1
 
-[node name="BackField" type="StaticBody2D" parent="."]
+[node name="Limits" type="StaticBody2D" parent="."]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( -4.37114e-08, -1, 60, -2.62268e-06, -130, -50 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 1 )
+shapes/1/transform = Matrix32( -4.37114e-08, -1, 60, -2.62268e-06, -130, 570 )
+shapes/1/trigger = false
 collision/layers = 3
 collision/mask = 3
 constant_linear_velocity = Vector2( 0, 0 )
@@ -52,7 +55,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="Back" type="CollisionShape2D" parent="BackField"]
+[node name="Back" type="CollisionShape2D" parent="Limits"]
 
 transform/pos = Vector2( -130, -50 )
 transform/rot = 90.0
@@ -60,5 +63,14 @@ transform/scale = Vector2( 1, 60 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Front" type="CollisionShape2D" parent="Limits"]
+
+transform/pos = Vector2( -130, 570 )
+transform/rot = 90.0
+transform/scale = Vector2( 1, 60 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 1
 
 
