@@ -45,4 +45,4 @@ func shoot_projectile():
 	var shootInstance = shoot.instance()
 	shootInstance.set_name("Shoot" + str(shootCount))
 	get_parent().add_child(shootInstance)
-	shootInstance.set_pos(self.get_pos())
+	shootInstance.set_pos(self.get_pos() + Vector2(0, -50))
