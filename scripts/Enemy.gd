@@ -4,6 +4,7 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 signal game_over
+signal dead
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -18,5 +19,6 @@ func _on_Enemy_body_enter( body ):
 	if body.get_name() == "Player":
 		emit_signal("game_over")
 	if body.get_name().begins_with("Shoot"):
+		emit_signal("dead")
 		body.queue_free()
 		self.queue_free()
