@@ -8,3 +8,8 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
+
+func _on_Shoot_body_enter( body ):
+	print(body.get_name())
+	if body.get_name() == "BackField":
+		self.queue_free()
